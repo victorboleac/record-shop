@@ -11,8 +11,8 @@ public class Album extends BaseObservable {
     private String name;
     private Integer releaseYear;
     private String genre;
-    private String artist;
-    public Album(long id, String name, Integer releaseYear, String genre, String artist) {
+    private Artist artist;
+    public Album(long id, String name, Integer releaseYear, String genre, Artist artist) {
         this.id = id;
         this.name = name;
         this.releaseYear = releaseYear;
@@ -59,11 +59,11 @@ public class Album extends BaseObservable {
     }
 
     @Bindable
-    public String getArtist() {
+    public Artist getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
+    public void setArtist(Artist artist) {
         this.artist = artist;
     }
 

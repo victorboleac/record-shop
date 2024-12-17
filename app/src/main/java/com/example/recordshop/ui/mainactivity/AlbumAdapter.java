@@ -1,4 +1,4 @@
-package com.example.recordshop;
+package com.example.recordshop.ui.mainactivity;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.recordshop.R;
 import com.example.recordshop.databinding.AlbumItemBinding;
 import com.example.recordshop.model.Album;
 

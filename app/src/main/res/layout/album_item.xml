@@ -13,8 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        android:backgroundTint="@color/cardview_light_background">
 
 
 
@@ -57,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
-                android:text="@{album.artist}"
+                android:text="@{album.artist.name}"
                 app:layout_constraintStart_toEndOf="@+id/album_image"
                 app:layout_constraintTop_toBottomOf="@+id/album_name"
                 app:layout_constraintEnd_toEndOf="parent"
