@@ -1,6 +1,12 @@
 package com.example.recordshop.model;
 
-public class Album {
+
+
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+
+public class Album extends BaseObservable {
     private long id;
     private String name;
     private Integer releaseYear;
@@ -15,6 +21,8 @@ public class Album {
     }
 
     public Album(){}
+
+    @Bindable
     public String getGenre() {
         return genre;
     }
@@ -23,6 +31,7 @@ public class Album {
         this.genre = genre;
     }
 
+    @Bindable
     public long getId() {
         return id;
     }
@@ -31,6 +40,7 @@ public class Album {
         this.id = id;
     }
 
+    @Bindable
     public String getName() {
         return name;
     }
@@ -39,6 +49,7 @@ public class Album {
         this.name = name;
     }
 
+    @Bindable
     public Integer getReleaseYear() {
         return releaseYear;
     }
@@ -47,6 +58,7 @@ public class Album {
         this.releaseYear = releaseYear;
     }
 
+    @Bindable
     public String getArtist() {
         return artist;
     }
@@ -54,4 +66,5 @@ public class Album {
     public void setArtist(String artist) {
         this.artist = artist;
     }
+
 }
