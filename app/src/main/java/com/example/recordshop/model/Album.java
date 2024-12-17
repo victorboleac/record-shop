@@ -12,6 +12,9 @@ public class Album extends BaseObservable {
     private Integer releaseYear;
     private String genre;
     private Artist artist;
+
+    private String coverUrl;
+
     public Album(long id, String name, Integer releaseYear, String genre, Artist artist) {
         this.id = id;
         this.name = name;
@@ -65,6 +68,13 @@ public class Album extends BaseObservable {
 
     public void setArtist(Artist artist) {
         this.artist = artist;
+    }
+
+    public String getCoverUrl()
+    {return coverUrl;}
+
+    public void setCoverUrl(String coverUrl){
+        this.coverUrl = coverUrl;
     }
 
 }
