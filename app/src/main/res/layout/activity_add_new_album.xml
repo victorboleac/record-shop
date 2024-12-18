@@ -127,7 +127,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editCoverUrl" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:onClick="@{clickHandler.onBackBtnClicked}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

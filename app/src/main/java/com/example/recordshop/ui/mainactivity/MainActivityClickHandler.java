@@ -6,11 +6,11 @@ import android.view.View;
 
 import com.example.recordshop.ui.addAlbum.AddNewAlbumActivity;
 
-public class MainActivityClickhandler {
+public class MainActivityClickHandler {
 
     private Context context;
 
-    public MainActivityClickhandler(Context context) {
+    public MainActivityClickHandler(Context context) {
         this.context = context;
     }
 
