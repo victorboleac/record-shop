@@ -15,12 +15,13 @@ public class Album extends BaseObservable {
 
     private String coverUrl;
 
-    public Album(long id, String name, Integer releaseYear, String genre, Artist artist) {
+    public Album(long id, String name, Integer releaseYear, String genre, Artist artist, String coverUrl) {
         this.id = id;
         this.name = name;
         this.releaseYear = releaseYear;
         this.genre = genre;
         this.artist = artist;
+        this.coverUrl = coverUrl;
     }
 
     public Album(){}
@@ -70,6 +71,7 @@ public class Album extends BaseObservable {
         this.artist = artist;
     }
 
+    @Bindable
     public String getCoverUrl()
     {return coverUrl;}
 
