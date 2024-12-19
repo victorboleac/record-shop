@@ -2,11 +2,15 @@ package com.example.recordshop.model;
 
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 
-public class Album extends BaseObservable {
+public class Album extends BaseObservable implements Parcelable {
     private long id;
     private String name;
     private String releaseYear;
@@ -25,6 +29,26 @@ public class Album extends BaseObservable {
     }
 
     public Album(){}
+
+    protected Album(Parcel in) {
+        id = in.readLong();
+        name = in.readString();
+        releaseYear = in.readString();
+        genre = in.readString();
+        coverUrl = in.readString();
+    }
+
+    public static final Creator<Album> CREATOR = new Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
 
     @Bindable
     public String getGenre() {
@@ -79,4 +103,17 @@ public class Album extends BaseObservable {
         this.coverUrl = coverUrl;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeString(releaseYear);
+        dest.writeString(genre);
+        dest.writeString(coverUrl);
+    }
 }
