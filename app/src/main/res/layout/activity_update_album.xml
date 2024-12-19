@@ -9,7 +9,7 @@
             type="com.example.recordshop.model.Album" />
         <variable
             name="clickHandler"
-            type="com.example.recordshop.ui.updatealbum." />
+            type="com.example.recordshop.ui.updatealbum.UpdateAlbumClickHandler" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
