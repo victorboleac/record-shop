@@ -1,6 +1,7 @@
 package com.example.recordshop.ui.mainactivity;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -16,18 +17,33 @@ import java.util.List;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder> {
 
+    private final RecyclerViewInterface recyclerViewInterface;
+
 
     private List<Album> albumList;
-    public AlbumAdapter(List<Album> albumList){
+    public AlbumAdapter(List<Album> albumList, RecyclerViewInterface recyclerViewInterface){
+        this.recyclerViewInterface = recyclerViewInterface;
         this.albumList = albumList;
     }
 
 
     public static class AlbumViewHolder extends RecyclerView.ViewHolder{
         private AlbumItemBinding binding;
-        public AlbumViewHolder(AlbumItemBinding albumItemBinding) {
+        public AlbumViewHolder(AlbumItemBinding albumItemBinding, RecyclerViewInterface recyclerViewInterface) {
             super(albumItemBinding.getRoot());
             this.binding = albumItemBinding;
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (recyclerViewInterface != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -40,7 +56,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
                 parent,
                 false
         );
-        return new AlbumViewHolder(binding);
+        return new AlbumViewHolder(binding, recyclerViewInterface);
     }
 
     @Override

@@ -16,7 +16,7 @@ import com.example.recordshop.databinding.ActivityMainBinding;
 import com.example.recordshop.model.Album;
 import com.example.recordshop.model.AlbumRepository;
 import java.util.List;
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface{
     private RecyclerView recyclerView;
     private List<Album> albumList;
     private AlbumAdapter albumAdapter;
@@ -57,10 +57,17 @@ public class MainActivity extends AppCompatActivity {
     }
     private void displayAlbumsInRecyclerView(){
         recyclerView = binding.recyclerView;
-        albumAdapter = new AlbumAdapter(albumList);
+        albumAdapter = new AlbumAdapter(albumList, this);
         recyclerView.setAdapter(albumAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this)      ;
         recyclerView.setLayoutManager(linearLayoutManager);
         albumAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void onItemClick(int position) {
+
+    }
+
+
 }
