@@ -2,6 +2,7 @@ package com.example.recordshop.model;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.library.baseAdapters.BR;
 
 public class Artist extends BaseObservable {
     private long id;
@@ -29,6 +30,7 @@ public class Artist extends BaseObservable {
     }
     public void setName(String name) {
         this.name = name;
+        notifyPropertyChanged(BR.name);
     }
 
     @Bindable

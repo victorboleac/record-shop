@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
 
     <data>
+
         <variable
             name="album"
             type="com.example.recordshop.model.Album" />
+
         <variable
             name="clickHandler"
-            type="com.example.recordshop.ui.addAlbum.AddAlbumClickHandlers" />
+            type="com.example.recordshop.ui.addAlbum.AddNewAlbumClickHandler" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -21,7 +24,7 @@
         app:layout_constraintTop_toTopOf="@+id/editArtist"
         app:layout_constraintBottom_toBottomOf="@+id/editArtist">
 
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:id="@+id/editText"
@@ -34,12 +37,12 @@
             android:background="@android:color/holo_purple"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{album.name}"
+            android:text="@={album.name}"
             android:textColorHint="@android:color/darker_gray"
             android:textColor="@color/black"
             android:id="@+id/editTitle"
@@ -50,12 +53,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            android:minHeight="60dp"/>
+            android:minHeight="60dp" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{album.releaseYear}"
+            android:text="@={album.releaseYear}"
             android:textColorHint="@android:color/darker_gray"
             android:textColor="@color/black"
             android:id="@+id/editReleaseYear"
@@ -66,12 +69,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            android:minHeight="60dp"/>
+            android:minHeight="60dp" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{album.genre}"
+            android:text="@={album.genre}"
             android:textColorHint="@android:color/darker_gray"
             android:textColor="@color/black"
             android:id="@+id/editGenre"
@@ -82,12 +85,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            android:minHeight="60dp"/>
+            android:minHeight="60dp" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{album.artist.name}"
+            android:text="@={album.artist.name}"
             android:textColorHint="@android:color/darker_gray"
             android:textColor="@color/black"
             android:id="@+id/editArtist"
@@ -98,26 +101,42 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            android:minHeight="60dp"/>
+            android:minHeight="60dp" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{album.coverUrl}"
+            android:text="@={album.artist.country}"
+            android:textColorHint="@android:color/darker_gray"
+            android:textColor="@color/black"
+            android:id="@+id/editCountry"
+            android:layout_marginBottom="28dp"
+            android:layout_marginTop="3dp"
+            android:hint="Enter Artist Country"
+            app:layout_constraintTop_toBottomOf="@+id/editArtist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:minHeight="60dp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@={album.coverUrl}"
             android:textColorHint="@android:color/darker_gray"
             android:textColor="@color/black"
             android:id="@+id/editCoverUrl"
             android:layout_marginBottom="28dp"
             android:layout_marginTop="3dp"
             android:hint="Enter cover Url"
-            app:layout_constraintTop_toBottomOf="@+id/editArtist"
+            app:layout_constraintTop_toBottomOf="@+id/editCountry"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            android:minHeight="60dp"/>
+            android:minHeight="60dp" />
 
         <Button
-            android:onClick="@{clickHandler.onSubmitBtnClicked}"
+            android:onClick="@{clickHandler::onSubmitBtnClicked}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/submit"
@@ -128,7 +147,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editCoverUrl" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:onClick="@{clickHandler.onBackBtnClicked}"
+            android:onClick="@{clickHandler::onBackBtnClicked}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/floatingActionButton"
@@ -136,7 +155,8 @@
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@android:drawable/ic_menu_revert"/>
+            android:src="@android:drawable/ic_menu_revert"
+            tools:ignore="ContentDescription" />
 
 
 

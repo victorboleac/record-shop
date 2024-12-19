@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
+         setContentView(R.layout.activity_main);
 
     binding = DataBindingUtil.setContentView(
             this,
@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     viewModel = new ViewModelProvider(this)
             .get(MainActivityViewModel.class);
     handler = new MainActivityClickHandler(this);
+
+    binding.setClickHandler(handler);
 
     getAllAlbums();
 

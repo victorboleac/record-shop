@@ -9,13 +9,13 @@ import androidx.databinding.Bindable;
 public class Album extends BaseObservable {
     private long id;
     private String name;
-    private Integer releaseYear;
+    private String releaseYear;
     private String genre;
     private Artist artist;
 
     private String coverUrl;
 
-    public Album(long id, String name, Integer releaseYear, String genre, Artist artist, String coverUrl) {
+    public Album(long id, String name, String releaseYear, String genre, Artist artist, String coverUrl) {
         this.id = id;
         this.name = name;
         this.releaseYear = releaseYear;
@@ -54,11 +54,11 @@ public class Album extends BaseObservable {
     }
 
     @Bindable
-    public Integer getReleaseYear() {
+    public String getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(Integer releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
 

@@ -4,9 +4,6 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -18,7 +15,7 @@ import com.example.recordshop.ui.mainactivity.MainActivityViewModel;
 public class AddNewAlbumActivity extends AppCompatActivity {
 
     private ActivityAddNewAlbumBinding binding;
-    private AddAlbumClickHandlers handler;
+    private AddNewAlbumClickHandler handler;
     private Album album;
 
     @Override
@@ -34,7 +31,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         MainActivityViewModel viewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);
 
-        handler = new AddAlbumClickHandlers(album, this, viewModel);
+        handler = new AddNewAlbumClickHandler(album, this, viewModel);
 
         binding.setAlbum(album);
 
