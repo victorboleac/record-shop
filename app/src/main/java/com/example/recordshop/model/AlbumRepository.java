@@ -3,12 +3,9 @@ package com.example.recordshop.model;
 import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
-
 import androidx.lifecycle.MutableLiveData;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,7 +14,6 @@ public class AlbumRepository {
 
     private ArrayList<Album> albums = new ArrayList<>();
     private MutableLiveData<List<Album>> mutableLiveData = new MutableLiveData<>();
-
     private Application application;
 
     public AlbumRepository(Application application){this.application = application;}
@@ -56,8 +52,10 @@ public class AlbumRepository {
 
             @Override
             public void onFailure(Call<Album> call, Throwable t) {
-                Toast.makeText(application.getApplicationContext(), "Unable to add album to Database",
+                Toast.makeText(application.getApplicationContext(),
+                        "Unable to add album to Database",
                         Toast.LENGTH_SHORT).show();
+
                 Log.e("POST onFailure", t.getMessage());
 
 
@@ -77,7 +75,8 @@ public class AlbumRepository {
 
             @Override
             public void onFailure(Call<Album> call, Throwable t) {
-                Toast.makeText(application.getApplicationContext(),"Unable to update the album",
+                Toast.makeText(application.getApplicationContext(),
+                        "Unable to update the album",
                         Toast.LENGTH_SHORT).show();
 
                 Log.e("PUT request", t.getMessage());

@@ -1,14 +1,10 @@
 package com.example.recordshop.model;
 
-
-
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-
 
 public class Album extends BaseObservable implements Parcelable {
     private Long id;
@@ -16,10 +12,10 @@ public class Album extends BaseObservable implements Parcelable {
     private String releaseYear;
     private String genre;
     private Artist artist;
-
     private String coverUrl;
 
-    public Album(Long id, String name, String releaseYear, String genre, Artist artist, String coverUrl) {
+    public Album(Long id, String name, String releaseYear, String genre,
+                 Artist artist, String coverUrl) {
         this.id = id;
         this.name = name;
         this.releaseYear = releaseYear;
@@ -40,6 +36,7 @@ public class Album extends BaseObservable implements Parcelable {
     }
 
     public static final Creator<Album> CREATOR = new Creator<Album>() {
+
         @Override
         public Album createFromParcel(Parcel in) {
             return new Album(in);
@@ -77,7 +74,6 @@ public class Album extends BaseObservable implements Parcelable {
     public void setName(String name) {
         this.name = name;
     }
-
     @Bindable
     public String getReleaseYear() {
         return releaseYear;
@@ -95,7 +91,6 @@ public class Album extends BaseObservable implements Parcelable {
     public void setArtist(Artist artist) {
         this.artist = artist;
     }
-
     @Bindable
     public String getCoverUrl()
     {return coverUrl;}
