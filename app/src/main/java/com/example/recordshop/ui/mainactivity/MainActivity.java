@@ -3,6 +3,8 @@ package com.example.recordshop.ui.mainactivity;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
@@ -18,6 +20,7 @@ import com.example.recordshop.model.Album;
 import com.example.recordshop.model.AlbumRepository;
 import com.example.recordshop.ui.updatealbum.UpdateAlbumActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface{
     private RecyclerView recyclerView;
@@ -27,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private MainActivityViewModel viewModel;
     private MainActivityClickHandler handler;
     private static final String ALBUM_KEY = "album";
+    private SearchView searchView;
+
+    private List<Album> filteredAlbumList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +53,38 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     getAllAlbums();
 
+    searchView =findViewById(R.id.searchView);
+    searchView.clearFocus();
+
+    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            filterList(newText);
+            return true;
+        }
+    });
+
 
     }
+
+    private void filterList(String newText) {
+        filteredAlbumList = new ArrayList<>();
+        for (Album album: albumList) if (album.getName().toLowerCase()
+                .contains(newText.toLowerCase()))
+                filteredAlbumList.add(album);
+
+        if(filteredAlbumList.isEmpty()) Toast.makeText(this, "No albums found!",
+                Toast.LENGTH_SHORT).show();
+        else albumAdapter.setFilteredList(filteredAlbumList);
+
+
+    }
+
 
     private void getAllAlbums() {
         viewModel.getAllAlbums().observe(this, new Observer<List<Album>>() {

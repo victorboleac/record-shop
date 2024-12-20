@@ -26,6 +26,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         this.albumList = albumList;
     }
 
+    public void setFilteredList(List<Album> filteredAlbumList) {
+        this.albumList = filteredAlbumList;
+        notifyDataSetChanged();
+    }
+
 
     public static class AlbumViewHolder extends RecyclerView.ViewHolder{
         private AlbumItemBinding binding;

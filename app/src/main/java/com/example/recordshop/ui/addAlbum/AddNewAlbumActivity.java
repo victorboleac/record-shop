@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.recordshop.R;
 import com.example.recordshop.databinding.ActivityAddNewAlbumBinding;
 import com.example.recordshop.model.Album;
+import com.example.recordshop.model.Artist;
 import com.example.recordshop.ui.mainactivity.MainActivityViewModel;
 
 public class AddNewAlbumActivity extends AppCompatActivity {
@@ -25,13 +26,14 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_album);
 
         album = new Album();
+        album.setArtist(new Artist());
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
 
         MainActivityViewModel viewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);
 
-        handler = new AddNewAlbumClickHandler(album, this, viewModel);
+        handler = new AddNewAlbumClickHandler(album, this, viewModel, binding);
 
         binding.setAlbum(album);
 

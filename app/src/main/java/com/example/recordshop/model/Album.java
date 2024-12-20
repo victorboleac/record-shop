@@ -11,7 +11,7 @@ import androidx.databinding.Bindable;
 
 
 public class Album extends BaseObservable implements Parcelable {
-    private long id;
+    private Long id;
     private String name;
     private String releaseYear;
     private String genre;
@@ -19,7 +19,7 @@ public class Album extends BaseObservable implements Parcelable {
 
     private String coverUrl;
 
-    public Album(long id, String name, String releaseYear, String genre, Artist artist, String coverUrl) {
+    public Album(Long id, String name, String releaseYear, String genre, Artist artist, String coverUrl) {
         this.id = id;
         this.name = name;
         this.releaseYear = releaseYear;
@@ -35,6 +35,7 @@ public class Album extends BaseObservable implements Parcelable {
         name = in.readString();
         releaseYear = in.readString();
         genre = in.readString();
+        artist = in.readParcelable(Artist.class.getClassLoader());
         coverUrl = in.readString();
     }
 
@@ -60,11 +61,11 @@ public class Album extends BaseObservable implements Parcelable {
     }
 
     @Bindable
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -114,6 +115,7 @@ public class Album extends BaseObservable implements Parcelable {
         dest.writeString(name);
         dest.writeString(releaseYear);
         dest.writeString(genre);
+        dest.writeParcelable(artist,flags);
         dest.writeString(coverUrl);
     }
 }
