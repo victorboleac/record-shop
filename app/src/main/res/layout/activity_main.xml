@@ -41,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/searchByArtistView"
-            android:queryHint="Search by album name..."
+            android:queryHint="Search by artist name..."
             android:iconifiedByDefault="false"
             android:layout_margin="20dp"
             android:background="@drawable/search_bar"
