@@ -32,6 +32,20 @@
             android:layout_margin="20dp"
             android:background="@drawable/search_bar"
             app:layout_constraintTop_toBottomOf="@+id/image_header"
+            app:layout_constraintBottom_toTopOf="@+id/searchByArtistView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+        <SearchView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchByArtistView"
+            android:queryHint="Search by album name..."
+            android:iconifiedByDefault="false"
+            android:layout_margin="20dp"
+            android:background="@drawable/search_bar"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
             app:layout_constraintBottom_toTopOf="@+id/recyclerView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +59,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_header"
+            app:layout_constraintTop_toBottomOf="@+id/searchByArtistView"
             android:layout_marginTop="20dp"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

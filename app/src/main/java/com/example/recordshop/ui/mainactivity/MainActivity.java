@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private MainActivityClickHandler handler;
     private static final String ALBUM_KEY = "album";
     private SearchView searchView;
+    private SearchView searchByArtistView;
 
     private List<Album> filteredAlbumList;
 
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_main);
 
     binding = DataBindingUtil.setContentView(
             this,
@@ -52,6 +52,21 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     binding.setClickHandler(handler);
 
     getAllAlbums();
+
+    searchByArtistView = findViewById(R.id.searchByArtistView);
+    searchByArtistView.clearFocus();
+    searchByArtistView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            filterByArtist(newText);
+            return true;
+        }
+    });
 
     searchView =findViewById(R.id.searchView);
     searchView.clearFocus();
@@ -70,6 +85,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     });
 
 
+    }
+
+    private void filterByArtist(String newText) {
+        filteredAlbumList = new ArrayList<>();
+        for (Album album:albumList) if (album.getArtist().getName().toLowerCase()
+                .contains(newText.toLowerCase()))
+            filteredAlbumList.add(album);
+
+        if (filteredAlbumList.isEmpty()) Toast.makeText(this,"No albums found!",
+                Toast.LENGTH_SHORT).show();
+        else albumAdapter.setFilteredList(filteredAlbumList);
     }
 
     private void filterList(String newText) {
@@ -109,7 +135,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     public void onItemClick(int position) {
 
         Intent intent = new Intent(MainActivity.this, UpdateAlbumActivity.class);
-        intent.putExtra(ALBUM_KEY, albumList.get(position));
+
+        if(filteredAlbumList==null || filteredAlbumList.isEmpty())
+            intent.putExtra(ALBUM_KEY, albumList.get(position));
+
+        else intent.putExtra(ALBUM_KEY, filteredAlbumList.get(position));
+
         startActivity(intent);
 
     }
