@@ -23,7 +23,6 @@ public class Album extends BaseObservable implements Parcelable {
         this.artist = artist;
         this.coverUrl = coverUrl;
     }
-
     public Album(){}
 
     protected Album(Parcel in) {
@@ -31,7 +30,7 @@ public class Album extends BaseObservable implements Parcelable {
         name = in.readString();
         releaseYear = in.readString();
         genre = in.readString();
-        artist = in.readParcelable(Artist.class.getClassLoader());
+        artist = in.readParcelable(Artist.class.getClassLoader(), Artist.class);
         coverUrl = in.readString();
     }
 
