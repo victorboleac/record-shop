@@ -17,7 +17,6 @@ import android.widget.SearchView;
 import com.example.recordshop.R;
 import com.example.recordshop.databinding.FragmentHomeBinding;
 import com.example.recordshop.model.Album;
-import com.example.recordshop.model.Artist;
 import com.example.recordshop.ui.mainactivity.AlbumAdapter;
 import com.example.recordshop.ui.mainactivity.MainActivityViewModel;
 import com.example.recordshop.ui.mainactivity.RecyclerViewInterface;
